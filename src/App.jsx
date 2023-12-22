@@ -4,7 +4,6 @@ import Task from './components/Task.jsx';
 import EditTask from './components/EditTask.jsx';
 
 function App() {
-  //to fetch the tasks from localstorage
   let [tasks,setTasks] = useState(()=>{
     const storedTasks = localStorage.getItem("tasks");
     return storedTasks ? JSON.parse(storedTasks) : [];
@@ -26,24 +25,6 @@ function App() {
   }
 
   function addTask(){
-    // const addData = async ()=>{
-    //   const res= await fetch('https://jsonplaceholder.typicode.com/todos', {
-    //         method:'POST',
-    //         body:JSON.stringify({
-    //           "userId": 1,
-    //           "id": Date.now(),
-    //           "title": value,
-    //           "completed": false,
-    //           "isEditing":false,
-    //         }),
-    //         headers:{
-    //           'Content-type': 'application/json; charset=UTF-8',
-    //         },
-    //   })
-    //   if(res.ok)
-    //     console.log("added");
-    // }
-    // addData();
     setTasks([{
         "id": Date.now(),
         "title": value,
@@ -53,10 +34,6 @@ function App() {
     ]);
 
     setValue('');
-    //TODO:set tasks in localstorage
-    console.log(JSON.stringify(tasks));
-    console.log(tasks);
-    // localStorage.setItem()
   }
 
   function isEditing(taskId){
@@ -64,26 +41,7 @@ function App() {
   }
 
   function updateTask(taskId,value){
-    // const updateData = async ()=>{
-    //   const res= await fetch('https://jsonplaceholder.typicode.com/todos/1', {
-    //         method:'PUT',
-    //         body:JSON.stringify({
-    //           "userId": 1,
-    //           "id": Date.now(),
-    //           "title": value,
-    //           "completed": false,
-    //           "isEditing":false,
-    //         }),
-    //         headers:{
-    //           'Content-type': 'application/json; charset=UTF-8',
-    //         },
-    //   })
-    //   if(res.ok)
-    //     console.log("updated");
-    // }
-    // updateData();
     setTasks( tasks.map(task => task.id === taskId ? {...task, title:value , isEditing:false} : task ) );
-    //TODO:set tasks in localstorage
   }
 
   function toggleTask(taskId){
@@ -95,20 +53,11 @@ function App() {
       const completedTasks = updatedTasks.filter( (task)=> task.completed );
       const incompletedTasks = updatedTasks.filter( (task)=> !task.completed );
        
-      return[...incompletedTasks,...completedTasks];
+      return[...incompletedTasks, ...completedTasks];
     });
   }
 
   function deleteTask(taskId){
-
-    // const remove = async() => {
-    //     const res = await fetch(`https://jsonplaceholder.typicode.com/todos/1`, {
-    //       method: 'DELETE',
-    //     });
-    //     if(res.ok)
-    //       console.log("deleted");
-    // }
-    // remove();
     const newTasks = tasks.filter(function (task) {
         return task.id !== Number(taskId);
     });

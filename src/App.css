@@ -1,10 +1,8 @@
 * {
   box-sizing: border-box;
-  /* font-family: 'Poppins', sans-serif; */
 }
 :root{
   --hover-bg:#3a3838;
-  /* --hover-bg-dark:#242424; */
 }
 #container {
   width: 500px;
@@ -14,11 +12,9 @@ ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  /* border: 1px solid #e5e5e5; */
 }
 ul li {
   padding: 10px;
-  /* padding-left: 0; */
   display: flex;
   justify-content: space-between;
   align-items: inherit;
