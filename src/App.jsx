@@ -44,11 +44,12 @@ function App() {
     //     console.log("added");
     // }
     // addData();
-    setTasks([...tasks, {
+    setTasks([{
         "id": Date.now(),
         "title": value,
         "completed": false,
         "isEditing":false}
+        ,...tasks
     ]);
 
     setValue('');
@@ -86,7 +87,16 @@ function App() {
   }
 
   function toggleTask(taskId){
-    setTasks( tasks.map( task =>  task.id === taskId ? {...task , completed: !task.completed } : task ) );
+    setTasks((prevTasks)=>{ 
+      const updatedTasks = prevTasks.map( (task) =>  
+        task.id === taskId ? {...task , completed: !task.completed } : task 
+      );
+
+      const completedTasks = updatedTasks.filter( (task)=> task.completed );
+      const incompletedTasks = updatedTasks.filter( (task)=> !task.completed );
+       
+      return[...incompletedTasks,...completedTasks];
+    });
   }
 
   function deleteTask(taskId){
