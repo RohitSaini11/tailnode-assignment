@@ -53,7 +53,7 @@ function App() {
       const completedTasks = updatedTasks.filter( (task)=> task.completed );
       const incompletedTasks = updatedTasks.filter( (task)=> !task.completed );
        
-      return[...incompletedTasks, ...completedTasks];
+      return[...incompletedTasks, ...completedTasks.reverse()];
     });
   }
 
