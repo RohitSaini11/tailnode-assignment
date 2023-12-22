@@ -4,18 +4,17 @@ import Task from './components/Task.jsx';
 import EditTask from './components/EditTask.jsx';
 
 function App() {
-  let [tasks,setTasks] = useState([]);
+  //to fetch the tasks from localstorage
+  let [tasks,setTasks] = useState(()=>{
+    const storedTasks = localStorage.getItem("tasks");
+    return storedTasks ? JSON.parse(storedTasks) : [];
+  });
+
   let [value,setValue] = useState('');
   
-  // useEffect(() =>{
-  //       const getData = async () =>{
-  //           const res = await fetch('https://jsonplaceholder.typicode.com/todos');
-  //           if(!res.ok) throw new Error("Oops! An erro has occured");
-  //           const json = await res.json();
-  //           setTasks(json.slice(0,4));
-  //       }
-  //       getData();
-  // },[]);
+  useEffect(() => {
+      localStorage.setItem("tasks",JSON.stringify(tasks));
+  },[tasks]);
 
   const handleSubmit = e =>{
     e.preventDefault();
@@ -50,8 +49,13 @@ function App() {
         "title": value,
         "completed": false,
         "isEditing":false}
-         ]);
+    ]);
+
     setValue('');
+    //TODO:set tasks in localstorage
+    console.log(JSON.stringify(tasks));
+    console.log(tasks);
+    // localStorage.setItem()
   }
 
   function isEditing(taskId){
@@ -78,6 +82,7 @@ function App() {
     // }
     // updateData();
     setTasks( tasks.map(task => task.id === taskId ? {...task, title:value , isEditing:false} : task ) );
+    //TODO:set tasks in localstorage
   }
 
   function toggleTask(taskId){
