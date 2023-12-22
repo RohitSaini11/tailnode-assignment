@@ -17,7 +17,7 @@ ul li {
   padding: 10px;
   display: flex;
   justify-content: space-between;
-  align-items: inherit;
+  /* align-items: inherit; */
   align-items: center;
 }
 ul li:hover {
@@ -59,9 +59,15 @@ h1 {
 #total-tasks {
   margin-bottom: 20px;
   font-size: 13px;
-    margin-left: 2px;
-    color: gray;
+  margin-left: 2px;
+  color: gray;
 }
+.task_tracker{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .completed{
   text-decoration: line-through;
 }

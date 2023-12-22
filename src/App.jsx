@@ -64,6 +64,10 @@ function App() {
     setTasks(newTasks);
   }
 
+  function resetTasks(){
+    setTasks([]);
+  }
+
   return (
     <div className="App">
 
@@ -72,8 +76,11 @@ function App() {
         <form onSubmit={handleSubmit}>
           <input placeholder="What is the task ?" className="add-task" id="add" value={value} onChange={(e)=> setValue(e.target.value)}/>
           <button className='add' type='submit'>Add</button>
-        </form>
-        <span id="total-tasks">Total tasks: <span id="tasks-counter">{tasks.length}</span></span>
+        </form> 
+        <div className='task_tracker'>
+          <span id="total-tasks">Total tasks: {tasks.length}</span>
+          <button className='add' onClick={resetTasks}>Reset all</button>
+        </div>
         <ul id="list">
           { 
             tasks.map( (task) => (
