@@ -3,37 +3,43 @@
 }
 :root{
   --hover-bg:#3a3838;
+  --shadow-color:rgb(167, 164, 164);
 }
-#container {
-  width: 500px;
-  margin: 0 auto;
+.container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto; 
 }
-ul {
+ul{
   list-style-type: none;
-  margin: 0;
+  margin-top: 1em;
   padding: 0;
 }
-ul li {
+ul li{
   padding: 10px;
+  font-size: large;
   display: flex;
   justify-content: space-between;
-  /* align-items: inherit; */
   align-items: center;
+  box-shadow: 0px 1px 1px var(--shadow-color);
 }
 ul li:hover {
   background: var(--hover-bg);
+  
 } 
 li label{
   cursor: pointer;
 }
 .delete {
     height: 28px;
-    padding: 5px 0px;
+    padding: 0.12em 0;
     border-radius: 3px;
     margin: 0 5px;
     cursor: pointer;
 }
+
 h1 {
+  margin-inline: auto;
   text-align: center;
 }
 .add-task {
@@ -56,13 +62,8 @@ h1 {
 .add:hover{
   background-color: var(--hover-bg);
 }
-#total-tasks {
-  margin-bottom: 20px;
-  font-size: 13px;
-  margin-left: 2px;
-  color: gray;
-}
 .task_tracker{
+  margin-block: 0.5em;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -70,10 +71,12 @@ h1 {
 
 .completed{
   text-decoration: line-through;
+  font-size: smaller !important;
 }
 
 @media (prefers-color-scheme: light){
   :root{
     --hover-bg:#f2f2f2;
+    --shadow-color:#3a3838;
   }
 }

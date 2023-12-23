@@ -71,8 +71,8 @@ function App() {
   return (
     <div className="App">
 
-      <h1>Todo List App</h1>
-      <div id="container">
+      <div className="container">
+        <h1>Todo List App</h1>
         <form onSubmit={handleSubmit}>
           <input placeholder="What is the task ?" className="add-task" id="add" value={value} onChange={(e)=> setValue(e.target.value)}/>
           <button className='add' type='submit'>Add</button>
